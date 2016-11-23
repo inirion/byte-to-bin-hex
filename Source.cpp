@@ -4,17 +4,8 @@ bool isbitset(unsigned char val, short bitnum)
 {
 	return ((val & (1 << bitnum)) != 0);
 }
-unsigned short get_nbytes(unsigned char c) {
-	unsigned short sum = 0;
-	for (short i = 0, pow = 1; i <= 3; i++, pow *= 2) {
-		if (isbitset(c, i)) {
-			sum += pow;
-		}
-	}
-	 return sum;
-}
 int main() {
-	unsigned char c = 222;
+	unsigned char c = 111;
 	unsigned char lower = c << 4;
 	lower >>= 4;
 	unsigned char higher = c >> 4;
@@ -25,14 +16,12 @@ int main() {
 	}
 	puts("");
 	puts("Hexa : ");
-	unsigned short value = get_nbytes(higher);
-	if (value > 9)
-	putchar('7' + value);
-	else putchar('0' + value);
-	value = get_nbytes(lower);
-	if (value > 9)
-		putchar('7' + value);
-	else putchar('0' + value);
+	if (higher > 9)
+	putchar('7' + higher);
+	else putchar('0' + higher);
+	if (lower > 9)
+		putchar('7' + lower);
+	else putchar('0' + lower);
 	
 	_getch();
 	return 0;
